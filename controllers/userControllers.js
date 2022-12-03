@@ -32,7 +32,7 @@ exports.loginUser = async (req, res, next) => {
   if (user.length == 1) {
     const hash = await bcrpyt.compare(password, user[0].password)
     if (hash) {
-      req.session.user = { id: newUser[0].id, username: newUser[0].username }
+      req.session.user = { id: user[0].id, username: user[0].username }
       res.status(200).json({ id: user[0].id, username: user[0].username })
     }
   } else {
